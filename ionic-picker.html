@@ -1,0 +1,33 @@
+<div ng-class="{'city-picker-backdrop' : vm.backdrop }">
+<ion-modal-view class="city-picker-bg">
+<div class="city-picker">
+  <div class="picker-title bor-bot">{{model}}</div>
+  <div class="city-picker-inner">
+    <div class="row ">
+      <div class="col col-50">
+        <ion-scroll delegate-handle={{vm.provinceHandle}}  on-scroll="vm.getData('province')" scrollbar-y=false >
+          <ul >
+            <li ng-repeat="province in vm.cityData" >{{province.name}}</li>
+          </ul>
+        </ion-scroll>
+      </div>
+      <div class="col col-50">
+        <ion-scroll delegate-handle={{vm.cityHandle}}  on-scroll="vm.getData('city')" scrollbar-y=false>
+          <ul >
+            <li  ng-repeat="city in vm.province.sub">{{city.name}}</li>
+          </ul>
+        </ion-scroll>
+      </div>
+    </div>
+    <div class="picker-center-highlight"></div>
+  </div>
+  
+  <footer class="footer bor-bot">
+    <a class="button-cancel" ng-click="vm.clickToClose()" href="javascript:void(0)">
+        {{vm.cancelText}}
+    </a>
+    <a class="button-ok" ng-click="vm.returnOk()" href="javascript:void(0)">{{vm.okText}}</a>
+  </footer>
+</div>
+</ion-modal-view>
+</div>
